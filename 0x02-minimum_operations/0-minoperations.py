@@ -10,7 +10,6 @@ def minOperations(n):
     calculates the fewest number of operation
     s needed to result
     in exactly n H characters in the file
-    
     Returns an integer
     If n is impossible to achieve, return 0
     """
