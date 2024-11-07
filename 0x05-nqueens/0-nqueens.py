@@ -1,31 +1,49 @@
 #!/usr/bin/python3
-"""N queens puzzle"""
+"""Write a program that solves the N queens problem."""
 import sys
 
 
-def isSafe(board, row, col, n):
-    """nqueens N
-        If the user called the program with the wrong number of arguments,
-        print Usage: nqueens N, followed by a new line,
-        and exit with the status 1
-        where N must be an integer greater or equal to 4
-        If N is not an integer, print N must be a number,
-        followed by a new line, and exit with the status 1
-        If N is smaller than 4, print N must be at least 4,
-        followed by a new line, and exit with the status 1
-        The program should print every possible solution to the problem
-        One solution per line
-        Format: see example
-        You don’t have to print the solutions in a specific order
-        You are only allowed to import the sys module
-        """
-    for i in range(col):
-        if board[row][i] == 1:
-            return False
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
-    for i, j in zip(range(row, n, 1), range(col, -1, -1)):
-        if board[i][j] == 1:
+def n_queens(n, board, row, result):
+    """Usage: nqueens N, followed by a new line,
+    and exit with the status 1"""
+    if row == n:
+        result.append(list(board))
+        return
+    for col in range(n):
+        if is_valid_col(board, row, col, n):
+            board[row] = col
+            n_queens(n, board, row + 1, result)
+
+
+def is_valid_col(board, row, col, n):
+    """where N must be an integer greater or equal to 4
+    If N is not an integer, print N must be a number,
+    followed by a new line, and exit with the status 1
+    If N is smaller than 4, print N must be at least 4,
+    followed by a new line, and exit with the status 1"""
+    for i in range(row):
+        if board[i] == col or \
+                abs(board[i] - col) == abs(i - row):
             return False
     return True
+
+
+def main():
+    """The N queens puzzle is the challenge of placing
+    N non-attacking queens on an N×N chessboard."""
+    if len(sys.argv) != 2:
+        exit(1)
+    if not sys.argv[1].isdigit():
+        exit(1)
+    n = int(sys.argv[1])
+    if n < 4:
+        exit(1)
+    board = [-1 for i in range(n)]
+    result = []
+    n_queens(n, board, 0, result)
+    for sol in result:
+        print(sol)
+
+
+if __name__ == "__main__":
+    main()
