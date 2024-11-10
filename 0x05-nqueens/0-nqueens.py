@@ -42,9 +42,11 @@ def solve_n_queens(N):
     if not solve_n_queens_util(board, 0, N):
         return
     for i in range(N):
+        print('[', end='')
         for j in range(N):
-            print(board[i][j], end=' ')
-        print()
+            print('[$i, $j]', end='')
+            if(j < N) print(',', end='')
+        print(']')
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
