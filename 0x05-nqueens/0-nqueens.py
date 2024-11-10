@@ -5,19 +5,15 @@ def is_safe(board, row, col, N):
     """
     Checks if it's safe to place a queen at (row, col) on the N x N board.
     """
-
     for i in range(col):
         if board[row][i] == 1:
             return False
-
     for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
         if board[i][j] == 1:
             return False
-
     for i, j in zip(range(row, N, 1), range(col, -1, -1)):
         if board[i][j] == 1:
             return False
-
     return True
 
 def solve_n_queens_util(board, col, N):
@@ -44,9 +40,10 @@ def solve_n_queens(N):
     for i in range(N):
         print('[', end='')
         for j in range(N):
-            print(f"[{i} , {j}]", end='')
-            if(j < N - 1):
-                print(',', end='')
+            if(board[i][j] == 1):
+                print(f"[{i} , {j}]", end='')
+                    if(j < N - 1):
+                        print(',', end='')
         print(']')
 
 if __name__ == "__main__":
