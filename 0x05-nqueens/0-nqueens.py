@@ -45,7 +45,8 @@ def solve_n_queens(N):
         print('[', end='')
         for j in range(N):
             print('[$i, $j]', end='')
-            if(j < N) print(',', end='')
+            if(j < N):
+                print(',', end='')
         print(']')
 
 if __name__ == "__main__":
