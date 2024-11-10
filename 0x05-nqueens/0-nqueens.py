@@ -44,7 +44,7 @@ def solve_n_queens(N):
     for i in range(N):
         print('[', end='')
         for j in range(N):
-            print('[' + i ', ' + j ']', end='')
+            print(f"[{i} , {j}]", end='')
             if(j < N):
                 print(',', end='')
         print(']')
