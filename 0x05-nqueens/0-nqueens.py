@@ -45,7 +45,7 @@ def solve_n_queens(N):
         print('[', end='')
         for j in range(N):
             print(f"[{i} , {j}]", end='')
-            if(j < N):
+            if(j < N - 1):
                 print(',', end='')
         print(']')
 
