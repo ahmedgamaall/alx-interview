@@ -42,8 +42,8 @@ def solve_n_queens(N):
         for j in range(N):
             if(board[i][j] == 1):
                 print(f"[{i} , {j}]", end='')
-                    if(j < N - 1):
-                        print(',', end='')
+                if(j < N - 1):
+                    print(',', end='')
         print(']')
 
 if __name__ == "__main__":
